@@ -73,7 +73,6 @@ namespace mu
 
   //------------------------------------------------------------------------------
   /** \brief Constructor.
-      \param a_szFormula the formula to interpret.
       \throw ParserException if a_szFormula is null.
   */
   ParserBase::ParserBase()
@@ -403,7 +402,7 @@ namespace mu
 
   //---------------------------------------------------------------------------
   /** \brief Set the formula. 
-      \param a_strFormula Formula as string_type
+      \param a_sExpr Formula as string_type
       \throw ParserException in case of syntax errors.
 
       Triggers first time calculation thus the creation of the bytecode and
@@ -785,7 +784,7 @@ namespace mu
 
   //---------------------------------------------------------------------------
   /** \brief Apply a function token. 
-      \param iArgCount Number of Arguments actually gathered used only for multiarg functions.
+      \param a_iArgCount Number of Arguments actually gathered used only for multiarg functions.
       \post The result is pushed to the value stack
       \post The function token is removed from the stack
       \throw exception_type if Argument count does not match function requirements.
@@ -943,8 +942,8 @@ namespace mu
 
   //---------------------------------------------------------------------------
   /** \brief Apply a binary operator. 
-      \param a_stOpt The operator stack
-      \param a_stVal The value stack
+      \param stOpt The operator stack
+      \param stVal The value stack
   */
   void ParserBase::ApplyRemainingOprt(ParserStack<token_type> &stOpt,
                                       ParserStack<token_type> &stVal) const
@@ -1440,7 +1439,7 @@ namespace mu
 
     \param a_iErrc [in] The error code of type #EErrorCodes.
     \param a_iPos [in] The position where the error was detected.
-    \param a_strTok [in] The token string representation associated with the error.
+    \param a_sTok [in] The token string representation associated with the error.
     \throw ParserException always throws that's the only purpose of this function.
   */
   void  ParserBase::Error(EErrorCodes a_iErrc, int a_iPos, const string_type &a_sTok) const
